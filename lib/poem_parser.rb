@@ -11,5 +11,6 @@ class PoemParser
   def author
     poem_lines = @poem.lines
     poem_lines[1].strip
-
+  end
+    
 end
