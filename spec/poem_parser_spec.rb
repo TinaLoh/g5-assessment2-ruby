@@ -29,5 +29,12 @@ describe PoemParser do
 
     expect(input.author).to eq("Henry Lawson")
   end
-  
+
+  it "returns the number of verses in the poem" do
+    input = PoemParser.new(@poem)
+
+    expect(input.verses).to eq(2)
+  end
+
+
 end
