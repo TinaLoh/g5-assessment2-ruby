@@ -41,6 +41,20 @@ describe PoemParser do
 
     expect(input.line_count).to eq(8)
   end
-    
+
+  it "hashifies the poem" do
+    input = PoemParser.new(@poem)
+
+    expected = {
+      "Henry Lawson" => {
+        "In Possum Land" => {
+          verses: 2,
+          lines: 8,
+      } ,
+    },
+  }
+
+    expect(input.hashify).to eq(expected)
+  end
 
 end

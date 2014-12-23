@@ -32,4 +32,15 @@ class PoemParser
     end
   counter - header_lines
   end
+
+  def hashify
+      poem_hash = {}
+      poem_verses_lines = {}
+
+      poem_verses_lines[title] = {verses: verse_count, lines: line_count}
+
+      poem_hash[author] = poem_verses_lines
+      poem_hash
+  end
+
 end
