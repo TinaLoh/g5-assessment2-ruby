@@ -57,4 +57,24 @@ describe PoemParser do
     expect(input.hashify).to eq(expected)
   end
 
+  it "returns all the files in data directory " do
+
+    files = Dir.glob("*/*.txt")
+
+
+    expected = [
+      "data/poem_01.txt",
+      "data/poem_02.txt",
+      "data/poem_03.txt",
+      "data/poem_04.txt",
+      "data/poem_05.txt",
+      "data/poem_06.txt",
+      "data/poem_07.txt",
+      "data/poem_08.txt",
+      "data/poem_09.txt",
+      ]
+
+    expect(files).to eq(expected)
+  end
+
 end
