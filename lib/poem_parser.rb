@@ -1,8 +1,8 @@
 class PoemParser
 
   def initialize(poem)
-      @poem = poem
-      @poem_lines = poem.lines
+    @poem = poem
+    @poem_lines = poem.lines
   end
 
   def title
@@ -30,17 +30,44 @@ class PoemParser
         counter += 1
       end
     end
-  counter - header_lines
+    counter - header_lines
   end
 
   def hashify
-      poem_hash = {}
-      poem_verses_lines = {}
+    poem_hash = {}
+    poem_verses_lines = {}
 
-      poem_verses_lines[title] = {verses: verse_count, lines: line_count}
+    poem_verses_lines[title] = {verses: verse_count, lines: line_count}
 
-      poem_hash[author] = poem_verses_lines
-      poem_hash
+    poem_hash[author] = poem_verses_lines
+    poem_hash
   end
 
+  def roryify(file_path)
+    all_poems_hash = {}
+    Dir.glob(file_path).each do |poem_file|
+      poem = File.read(poem_file)
+      if all_poems_hash.has_key? author
+        all_poems_hash[author].store(
+        title,
+        {
+          verses: verse_count,
+          lines: line_count
+        }
+        )
+      else
+        all_poems_hash[author] = poem.hashify
+      end
+    end
+    all_poems_hash
+  end
+end
+
+all_the_poems = File.join("**", "data", "**", "*.txt")
+files = Dir.glob(all_the_poems)
+
+files.each do |file|
+  raw_file = File.read(file)
+  PoemParser.new(raw_file)
+  p PoemParser.new(raw_file).hashify
 end

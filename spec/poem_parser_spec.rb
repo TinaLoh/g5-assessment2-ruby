@@ -59,8 +59,8 @@ describe PoemParser do
 
   it "returns all the files in data directory " do
 
-    files = Dir.glob("*/*.txt")
-
+    all_the_poems = File.join("**", "data", "**", "*.txt")
+    files = Dir.glob(all_the_names)
 
     expected = [
       "data/poem_01.txt",
